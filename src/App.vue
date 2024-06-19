@@ -202,6 +202,12 @@
       changeMode() {
       this.darkMode= !this.darkMode
       console.log(this.darkMode);
+      },
+      showQuestion(i){
+        this.questions.forEach(q => {
+          q.visible=false
+        })
+        this.questions[i].visible= true
       }
     }
   }
@@ -211,7 +217,7 @@
   <main>
   <HeaderPage :darkMode="darkMode" @changeMode="changeMode"/>
   <OrderPage @showItem="showItems" :filteredItem="filteredItem" :filteredId="this.filteredItem[0].id || 'paypal'" :darkMode="darkMode"/>
-  <QuestionsPage :questions="questions"/>
+  <QuestionsPage :questions="questions" @questionClicked="showQuestion"/>
   </main>
 </template>
 
