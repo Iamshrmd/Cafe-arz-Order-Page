@@ -42,64 +42,16 @@
     <div>
         <div class="flex gap-x-3 flex-1">
             <div class="flex gap-y-2 flex-col md:flex-1 w-full md:w-1/2">
-                <div @mouseover="showOrderOption('paypal')" class="dark-bgi flex justify-start items-center gap-x-2 px-2 py-1 rounded hover:bg-[#EEB60E] hover:cursor-pointer" :class="{'light-bgi' : darkMode}">
-                    <img class="w-8" src="../assets/img icons/Paypal.png">
-                    <h6 class="font-medium">خدمات پی پال</h6>
-                </div>
-                <div @mouseover="showOrderOption('perfect')" class="dark-bgi flex justify-start items-center gap-x-2 px-2 py-1 rounded  hover:bg-[#EEB60E] hover:cursor-pointer">
-                    <img class="w-8" src="../assets/img icons/Perfect.png">
-                    <h6 class="font-medium">خدمات پرفکت مانی</h6>
-                </div>
-                <div @mouseover="showOrderOption('visa')" class="dark-bgi flex justify-start items-center gap-x-2 px-2 py-1 rounded  hover:bg-[#EEB60E] hover:cursor-pointer">
-                    <img class="w-8" src="../assets/img icons/Visa.png">
-                    <h6 class="font-medium">خدمات ویزا و مسترکارت</h6>
-                </div>
-                <div @mouseover="showOrderOption('BuyUT')" class="dark-bgi flex justify-start items-center gap-x-2 px-2 py-1 rounded  hover:bg-[#EEB60E] hover:cursor-pointer">
-                    <img class="w-8" src="../assets/img icons/Utopia_icon2.png">
-                    <h6 class="font-medium">خدمات یوتوپیا (Utopia)</h6>
-                </div>
-                <div @mouseover="showOrderOption('giftcard')" class="dark-bgi flex justify-start items-center gap-x-2 px-2 py-1 rounded  hover:bg-[#EEB60E] hover:cursor-pointer">
-                    <img class="w-8" src="../assets/img icons/Giftcard.png">
-                    <h6 class="font-medium">گیفت کارت ها</h6>
-                </div>
-                <div class="dark-bgi flex justify-start items-center gap-x-2 px-2 py-1 rounded  hover:bg-[#EEB60E] hover:cursor-pointer">
-                    <img class="w-8" src="../assets/img icons/Meta.png">
-                    <h6 class="font-medium">خدمات متاورس</h6>
-                </div>
-                <div class="dark-bgi flex justify-start items-center gap-x-2 px-2 py-1 rounded  hover:bg-[#EEB60E] hover:cursor-pointer">
-                    <img class="w-8" src="../assets/img icons/Payeer.png">
-                    <h6 class="font-medium">خدمات پایر (payeer)</h6>
-                </div>
-                <div class="dark-bgi flex justify-start items-center gap-x-2 px-2 py-1 rounded  hover:bg-[#EEB60E] hover:cursor-pointer">
-                    <img class="w-8" src="../assets/img icons/Embassy.png">
-                    <h6 class="font-medium">تعیین وقت سفارت ها</h6>
-                </div>
-                <div class="dark-bgi flex justify-start items-center gap-x-2 px-2 py-1 rounded  hover:bg-[#EEB60E] hover:cursor-pointer">
-                    <img class="w-8" src="../assets/img icons/Edu.png">
-                    <h6 class="font-medium">ثبت نام آزمون های بین المللی</h6>
-                </div>
-                <div class="dark-bgi flex justify-start items-center gap-x-2 px-2 py-1 rounded  hover:bg-[#EEB60E] hover:cursor-pointer">
-                    <img class="w-8" src="../assets/img icons/Host.png">
-                    <h6 class="font-medium">پرداخت هاستینگ ها</h6>
-                </div>
-                <div class="dark-bgi flex justify-start items-center gap-x-2 px-2 py-1 rounded  hover:bg-[#EEB60E] hover:cursor-pointer">
-                    <img class="w-8" src="../assets/img icons/Dev.png">
-                    <h6 class="font-medium">پرداخت های توسعه دهندگان و طراحان</h6>
-                </div>
-                <div class="dark-bgi flex justify-start items-center gap-x-2 px-2 py-1 rounded  hover:bg-[#EEB60E] hover:cursor-pointer">
-                    <img class="w-8" src="../assets/img icons/Subscribe.png">
-                    <h6 class="font-medium">خرید اشتراک سایت های خارجی</h6>
-                </div>
-                <div class="dark-bgi flex justify-start items-center gap-x-2 px-2 py-1 rounded  hover:bg-[#EEB60E] hover:cursor-pointer">
-                    <img class="w-8" src="../assets/img icons/Income.png">
-                    <h6 class="font-medium">نقد درآمد ارز - فروش ارز به ما</h6>
+                <div @mouseover="showOrderOption(service.title)" v-for="service in services" :key="service" class="dark-bgi flex justify-start items-center gap-x-2 px-2 py-1 rounded hover:bg-[#EEB60E] hover:cursor-pointer">
+                    <img class="w-8" :src="`src/assets/img icons/${service.img}`">
+                    <h6>{{ service.des }}</h6>
                 </div>
             </div>
             <div class="hidden md:flex w-1/2">
                 <div class="md:flex md:flex-1 md:flex-col gap-y-2">
                 <div class="bg-[#2E3456] gap-x-2 px-2 py-1 rounded flex" v-for="item in this.filteredItem[0].items" :key="item">
                     <img class="w-8 h-8" :src="`src/assets/img items/${filteredId}/${item.img}`">
-                    <h5 class="font-medium">{{item.title}}</h5>
+                    <h5 class="font-medium" :class="{'text-[#fff]' : !darkMode}">{{item.title}}</h5>
                 </div>
             </div>
             </div>
@@ -115,7 +67,7 @@
                     <div class="bg-[#2E3456] gap-x-2 px-2 py-1 rounded flex border-[#fff] items-center border-solid border-px rounded !opacity-100 justify-between" v-for="item in this.filteredItem[0].items" :key="item">
                         <div class="flex items-center gap-x-3">
                             <img class="w-8" :src="`src/assets/img items/${filteredId}/${item.img}`">
-                            <h5 class="font-medium">{{item.title}}</h5>
+                            <h5 class="font-medium" :class="{'text-[#fff]' : !darkMode}">{{item.title}}</h5>
                         </div>
                         <img class="w-6 h-6" src="../assets/imgs/icons8-arrow-30.png" alt="">
                     </div>
@@ -127,7 +79,7 @@
 
 <script>
 export default {
-    props: ['filteredItem', 'filteredId', 'darkMode'],
+    props: ['filteredItem', 'filteredId', 'darkMode', 'services'],
     methods:{
         showOrderOption(name) {
             this.$emit('showItem',name)

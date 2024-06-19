@@ -189,6 +189,33 @@
               title:"مدت زمان انجام تبدیل ارزها به ریال چقدر است ؟",
               des:"با توجه به نوع ارزها و وریفای بودن اکانت حساب کاربری شما حدودا بین 15 دقیقه تا 2 ساعت به طول می انجامد"
             }
+          ],
+          services:[
+            {
+              title:'paypal',
+              img:'Paypal.png',
+              des:'خدمات پی پال',
+            },
+            {
+              title:'perfect',
+              img:'Perfect.png',
+              des:'خدمات پرفکت مانی',
+            },
+            {
+              title:'visa',
+              img:'Visa.png',
+              des:'خدمات ویزا و مسترکارت',
+            },
+            {
+              title:'BuyUT',
+              img:'Utopia_icon2.png',
+              des:'خدمات یوتوپیا (Utopia)',
+            },
+            {
+              title:'giftcard',
+              img:'Giftcard.png',
+              des:'گیفت کارت ها',
+            }
           ]
       }
     },
@@ -209,9 +236,15 @@
         })
         this.questions[i].visible= true
       },
-      toggleQuestion(i){
-        this.questions[i].visible = false
-      }
+      toggleQuestion(i) {
+      this.questions.forEach((q, index) => {
+        if (index === i) {
+          q.visible = !q.visible;
+        } else {
+          q.visible = false;
+        }
+      });
+    },
     }
   }
 </script>
@@ -219,8 +252,8 @@
 <template>
   <main>
   <HeaderPage :darkMode="darkMode" @changeMode="changeMode"/>
-  <OrderPage @showItem="showItems" :filteredItem="filteredItem" :filteredId="this.filteredItem[0].id || 'paypal'" :darkMode="darkMode"/>
-  <QuestionsPage :questions="questions" @questionClicked="showQuestion" @toggleQuestion="toggleQuestion"/>
+  <OrderPage @showItem="showItems" :services="services" :filteredItem="filteredItem" :filteredId="this.filteredItem[0].id || 'paypal'" :darkMode="darkMode"/>
+  <QuestionsPage :questions="questions" @toggleQuestion="toggleQuestion" />
   </main>
 </template>
 
