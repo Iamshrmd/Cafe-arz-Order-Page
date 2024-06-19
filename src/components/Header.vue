@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-[#242947] text-[#fff] py-2 px-5 flex items-center justify-between" :class="{'bg-[#E4EAF3] text-[#000]' : !darkMode}">
+  <nav class="sticky bg-[#242947] text-[#fff] py-2 px-5 flex items-center justify-between" :class="{'bg-[#E4EAF3] text-[#000]' : !darkMode}">
     <div class="flex items-center gap-x-2">
       <button class="navbar-burger flex items-center text-blue-600 p-2 bg-[#EEB60E] rounded-tl-lg rounded-br-lg md:hidden">
 				<svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

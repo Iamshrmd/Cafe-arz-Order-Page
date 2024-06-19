@@ -253,7 +253,7 @@
   <main>
   <HeaderPage :darkMode="darkMode" @changeMode="changeMode"/>
   <OrderPage @showItem="showItems" :services="services" :filteredItem="filteredItem" :filteredId="this.filteredItem[0].id || 'paypal'" :darkMode="darkMode"/>
-  <QuestionsPage :questions="questions" @toggleQuestion="toggleQuestion" />
+  <QuestionsPage :questions="questions" @toggleQuestion="toggleQuestion" :darkMode="darkMode"/>
   </main>
 </template>
 
