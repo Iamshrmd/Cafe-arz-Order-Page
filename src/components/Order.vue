@@ -44,7 +44,7 @@
             <div class="flex gap-y-2 flex-col md:flex-1 w-full md:w-1/2">
                 <div @mouseover="showOrderOption(service.title)" v-for="service in services" :key="service" class="dark-bgi flex justify-start items-center gap-x-2 px-2 py-1 rounded hover:bg-[#EEB60E] hover:cursor-pointer">
                     <img class="w-8" :src="`src/assets/img icons/${service.img}`">
-                    <h6>{{ service.des }}</h6>
+                    <h6 :class="{'text-[#fff]' : !darkMode}">{{ service.des }}</h6>
                 </div>
             </div>
             <div class="hidden md:flex w-1/2">
