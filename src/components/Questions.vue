@@ -2,12 +2,12 @@
   <div class="vazirmatn bg-[#242947] text-[#fff] py-2 px-5">
     <h5>سوالات متداول</h5>
     <div>
-        <div @click="questionClicked(i)" class="my-2 p-2 border-solid border border-[#fff] rounded hover:cursor-pointer" v-for="(question,i) in questions" :key="i">
+        <div @click="questionClicked(i)" class="my-2 p-2 duration-1000 border-solid border border-[#fff] rounded hover:cursor-pointer" v-for="(question,i) in questions" :key="i">
             <div @click.self="toggleQuestion" class="flex items-center justify-between my-2">
                 <h4 :class="{'text-[#EEB60E]' : question.visible}">{{ question.title }}</h4>
                 <img class="w-5" src="../assets/imgs/icons8-arrow-50.png" :class="{'transform rotate-180 ' : question.visible}">
             </div>
-            <p class="hidden" :class="{'!inline-block' : question.visible}">{{ question.des }}</p>
+            <p class="max-h-0 overflow-hidden smooth" :class="{'max-h-fit' : question.visible}">{{ question.des }}</p>
         </div>
     </div>
   </div>
@@ -28,5 +28,7 @@ export default {
 </script>
 
 <style>
-
+    .smooth{
+        transition: m-h-fit 0.2s ease-out
+    }
 </style>
