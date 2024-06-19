@@ -7,7 +7,7 @@
                 <h4 :class="{'text-[#EEB60E]' : question.visible}">{{ question.title }}</h4>
                 <img class="w-5" src="../assets/imgs/icons8-arrow-50.png" :class="{'transform rotate-180 ' : question.visible}">
             </div>
-            <p v-if="question.visible">{{ question.des }}</p>
+            <p class="block" v-if="question.visible" :class="{'hidden' : !question.visible}">{{ question.des }}</p>
         </div>
     </div>
   </div>
