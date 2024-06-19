@@ -208,6 +208,9 @@
           q.visible=false
         })
         this.questions[i].visible= true
+      },
+      toggleQuestion(i){
+        this.questions[i].visible = false
       }
     }
   }
@@ -217,7 +220,7 @@
   <main>
   <HeaderPage :darkMode="darkMode" @changeMode="changeMode"/>
   <OrderPage @showItem="showItems" :filteredItem="filteredItem" :filteredId="this.filteredItem[0].id || 'paypal'" :darkMode="darkMode"/>
-  <QuestionsPage :questions="questions" @questionClicked="showQuestion"/>
+  <QuestionsPage :questions="questions" @questionClicked="showQuestion" @toggleQuestion="toggleQuestion"/>
   </main>
 </template>
 
